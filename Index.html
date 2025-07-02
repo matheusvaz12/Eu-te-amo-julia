@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eu te amo, Julia ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #ffe4e1, #fff0f5);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      margin-top: 50px;
+      font-size: 2.5em;
+      color: #c2185b;
+    }
+    .typing {
+      border-right: 3px solid #c2185b;
+      font-size: 1.3em;
+      margin: 20px auto;
+      max-width: 90vw;
+      color: #880e4f;
+      text-align: center;
+      white-space: normal;
+      overflow: visible;
+      min-height: 3em;
+      padding-right: 5px;
+      animation: blink 0.7s step-end infinite;
+    }
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #c2185b; }
+    }
+    button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      background-color: #f06292;
+      color: white;
+      border: none;
+      font-size: 1em;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #ec407a;
+    }
+    .surprise {
+      margin-top: 30px;
+      font-size: 1.2em;
+      color: #4a148c;
+      display: none;
+    }
+    .slideshow {
+      margin-top: 20px;
+    }
+    .slideshow img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <h1>Feliz 1 ano e 4 meses, meu amor!</h1>
+  <div class="typing" id="typing-text"></div>
+
+  <div class="slideshow">
+    <img id="slideshow-img" src="foto.jpg" alt="Foto" />
+  </div>
+
+  <button id="btnSurpresa">Clique aqui, Julia 💌</button>
+
+  <div class="surprise" id="surpresa">Com amor, do seu esposo ❤️</div>
+
+  <audio id="musica" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    const texto = "Julia Rodrigues de Souza, cada momento contigo é eterno. Obrigado por 1 ano e 4 meses ao seu lado.";
+    const typingElement = document.getElementById("typing-text");
+    let i = 0;
+
+    function digitar() {
+      if (i < texto.length) {
+        typingElement.innerHTML += texto.charAt(i);
+        i++;
+        setTimeout(digitar, 60);
+      }
+    }
+    digitar();
+
+    const btn = document.getElementById("btnSurpresa");
+    const musica = document.getElementById("musica");
+    const surpresa = document.getElementById("surpresa");
+
+    btn.addEventListener("click", () => {
+      musica.play().catch(() => {});
+      surpresa.style.display = "block";
+      btn.disabled = true; // opcional: desativa o botão após clicar
+    });
+
+    const imagens = ["foto.jpg", "foto1.jpg", "foto2.jpg"];
+    let imgIndex = 0;
+
+    setInterval(() => {
+      imgIndex = (imgIndex + 1) % imagens.length;
+      document.getElementById("slideshow-img").src = imagens[imgIndex];
+    }, 7000); // 7 segundos
+  </script>
+</body>
+</html>
